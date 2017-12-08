@@ -10,15 +10,18 @@ app.get('/', (req, res) => {
   res.status(200).send(`Pete's memory palace`);
 });
 
-const db = {}; // will move database connection to different file but here for testing
-const uri ="postgres://jyxryiuv:weNyUiJmPQFoJG-aXqoZFMp_cYNSYdIV@nutty-custard-apple.db.elephantsql.com:5432/jyxryiuv";
-
 // create a pool
-var pool = new pg.Pool()
+const pool = new pg.Pool({
+  user: 'jyxryiuv',
+  host: 'nutty-custard-apple.db.elephantsql.com',
+  database: 'jyxryiuv',
+  password: 'weNyUiJmPQFoJG-aXqoZFMp_cYNSYdIV  Rotate password',
+  port: 5432,
+})
 
 // connection using created pool
 pool.connect(function(err, client, done) {
-  console.log('connected to postgres db')
+  console.log('connected to postgres db'.blue)
   // client.query(/* etc, etc */)
   done()
 })
