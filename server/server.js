@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const colors = require('colors');
 const app = express();
@@ -12,10 +13,10 @@ app.get('/', (req, res) => {
 
 // create a pool
 const pool = new pg.Pool({
-  user: 'jyxryiuv',
-  host: 'nutty-custard-apple.db.elephantsql.com',
-  database: 'jyxryiuv',
-  password: 'weNyUiJmPQFoJG-aXqoZFMp_cYNSYdIV  Rotate password',
+  user: `${process.env.USER}`,
+  host: `${process.env.DB_HOST}`,
+  database: `${process.env.DB_DB}`,
+  password: `${process.env.DB_PASSWORD}`,
   port: 5432,
 })
 
@@ -25,9 +26,6 @@ pool.connect(function(err, client, done) {
   // client.query(/* etc, etc */)
   done()
 })
-
-// pool shutdown
-// pool.end()
 
 
 app.listen(PORT, () => console.log(`App listening on port ${PORT}...`.green));
