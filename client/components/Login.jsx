@@ -1,19 +1,17 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 'react-router'
-import Header from './Header'
-import Main from './Main'
 
-
-class App extends Component {
+class Login extends Component {
 
     render() {
       return(
         <div>
-          <Header />
-          <Main />
+          <input type="text" placeholder="Enter username"/>
+          <input type="text" placeholder="Enter password"/>
+
         </div>
       )
     }
 }
-export default App
+export default Login
