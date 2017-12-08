@@ -1,0 +1,1 @@
+const mainStyle = require('./styles/main.css'); 
