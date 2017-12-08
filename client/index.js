@@ -1,1 +1,1 @@
-const mainStyle = require('./styles/main.css'); 
+const mainStyle = require('./main.css'); 
