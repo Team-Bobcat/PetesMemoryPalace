@@ -6,13 +6,13 @@ const config = {
   entry: './client/index.js',
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'bundle.[chunkhash].js'
+    filename: 'bundle.[hash].js'
   },
   module: {
     rules: [
       {
         use: 'babel-loader',
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/
       },
       {
@@ -20,6 +20,9 @@ const config = {
         test: /\.css$/
       }
     ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
   },
   plugins: [
     new HtmlWebpackPlugin({

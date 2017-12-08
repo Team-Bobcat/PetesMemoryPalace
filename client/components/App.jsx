@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { render } from 'react-dom'
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 'react-router'
 
-class App extends React.Component {
+class App extends Component {
 
     render() {
-      render(
+      return(
         <div>
-        <h1>Hello World</h1>
+          <h1>Hello World</h1>
         </div>
       )
     }

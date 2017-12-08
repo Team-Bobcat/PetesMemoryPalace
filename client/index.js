@@ -1,6 +1,6 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { render } from 'react-dom'
 import App from './components/App'
-const mainStyle = require('./styles/main.css'); 
 
-ReactDom.render(<App />, document.getElementById('root'))
+render(<App />, document.getElementById('root'))
+const mainStyle = require('./main.css'); 
