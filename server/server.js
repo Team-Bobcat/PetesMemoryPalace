@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 
 // create a pool
 const pool = new pg.Pool({
-  user: `${process.env.USER}`,
+  user: `${process.env.DB_USER}`,
   host: `${process.env.DB_HOST}`,
   database: `${process.env.DB_DB}`,
   password: `${process.env.DB_PASSWORD}`,
@@ -25,6 +25,11 @@ pool.connect(function(err, client, done) {
   console.log('connected to postgres db'.blue)
   // client.query(/* etc, etc */)
   done()
+})
+
+pool.query('SELECT NOW()', (err, res) => {
+  console.log(err, res)
+  pool.end()
 })
 
 

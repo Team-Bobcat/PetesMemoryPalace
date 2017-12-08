@@ -1,4 +1,4 @@
-const db = require('./../models/models');
+const models = require('./../models/index');
 
 const dbFuncs = {};
 
