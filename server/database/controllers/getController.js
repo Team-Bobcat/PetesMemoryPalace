@@ -24,17 +24,17 @@ dbFuncs.newPalace = (req, res, next) => {
 
 dbFuncs.getPalace = (req, res, next) => { 
   const palace = req.query.palace;
-  db.Palace.findAll({where: {UserId: req.user.id, name: palace}}).then(palace => { // not testing this yet 
+  db.Palace.findAll({where: {UserId: req.user.id, name: palace}}).then(palace => { 
     // console.log(palaces);
     res.cookie('palaceId', palace.id);
-    res.send(palace, 202);
+    res.send(palace, 200);
   })
 }
 
 dbFuncs.getNodes = (req, res, next) => {
   palaceId = req.cookies.palaceId;
-  db.Palace.findAll({where: {PalaceId: palaceId}}).then(nodes => { // not testing this yet 
-    res.send(nodes, 200);
+  db.Palace.findAll({where: {PalaceId: palaceId}}).then(nodes => {  
+    res.send(nodes);
   })
 }
 

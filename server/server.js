@@ -147,5 +147,7 @@ app.get('/getPalace', getController.getPalace)
 
 app.post('/storeNode', postController.storeNode)
 
+app.get('/deleteNode', deleteController.deleteNode)
+
 
 app.listen(SERVER_PORT, () => console.log(`App listening on port ${SERVER_PORT}...`.yellow));

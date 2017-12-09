@@ -15,8 +15,17 @@ dbFuncs.deleteImg = (req, res, next) => {
 
 }
 
-dbFuncs.deleteNodes = (req, res, next) => {
-
+dbFuncs.deleteNode = (req, res, next) => {
+  const nodeId = req.query.nodeId 
+  // console.log("IDDDDD", req.user.id);
+  db.Palace.destroy({where: {id: nodeId}})
+    .then(() =>
+      res.send('destroyed')
+    );
+  palaceId = req.cookies.palaceId;
+  db.Palace.findAll({where: {PalaceId: palaceId}}).then(nodes => { 
+    res.send(nodes);
+  })
 }
 
 module.exports = dbFuncs;
