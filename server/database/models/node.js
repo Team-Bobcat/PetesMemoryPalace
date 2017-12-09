@@ -7,7 +7,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.UUID, 
       defaultValue: DataTypes.UUIDV4
     },
-    nodeNum: DataTypes.INTEGER,
     locX: DataTypes.STRING,
     locY: DataTypes.STRING,
     dateDescription: DataTypes.STRING,
@@ -19,11 +18,12 @@ module.exports = (sequelize, DataTypes) => {
     dayImg: DataTypes.STRING,
     baseYearImg: DataTypes.STRING,
     endYearImg: DataTypes.STRING,
-    // monthImgArray: DataTypes.ARRAY(DataTypes.STRING),
-    // dayImgArray: DataTypes.ARRAY(DataTypes.STRING),
-    // baseYearImgArray: DataTypes.ARRAY(DataTypes.STRING),
-    // endYearImgArray: DataTypes.ARRAY(DataTypes.STRING)
-  }, {
+    monthImgArray: {type: DataTypes.ARRAY(DataTypes.STRING)},
+    dayImgArray: {type: DataTypes.ARRAY(DataTypes.STRING)},
+    baseYearImgArray: {type: DataTypes.ARRAY(DataTypes.STRING)},
+    endYearImgArray: {type: DataTypes.ARRAY(DataTypes.STRING)}
+  }, 
+  {
     classMethods: {
       associate: function(models) {
         Node.belongsTo(models.Image, {

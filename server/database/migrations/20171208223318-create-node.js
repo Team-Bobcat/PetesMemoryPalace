@@ -8,9 +8,6 @@ module.exports = {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4
       },
-      nodeNum: {
-        type: Sequelize.INTERGER
-      },
       locX: {
         type: Sequelize.STRING
       },
@@ -44,18 +41,18 @@ module.exports = {
       endYearImg: {
         type: Sequelize.STRING
       },
-      // monthImgArray: {
-      //   type: Sequelize.ARRAY(Sequelize.STRING)
-      // },
-      // dayImgArray: {
-      //   type: Sequelize.ARRAY(Sequelize.STRING)
-      // },
-      // baseYearImgArray: {
-      //   type: Sequelize.ARRAY(Sequelize.STRING) 
-      // },
-      // endYearImgArray: {
-      //   type: Sequelize.ARRAY(Sequelize.STRING)
-      // },
+      monthImgArray: {
+        type: Sequelize.ARRAY(Sequelize.STRING)
+      },
+      dayImgArray: {
+        type: Sequelize.ARRAY(Sequelize.STRING)
+      },
+      baseYearImgArray: {
+        type: Sequelize.ARRAY(Sequelize.STRING) 
+      },
+      endYearImgArray: {
+        type: Sequelize.ARRAY(Sequelize.STRING)
+      },
       ConSTRINGId: {
         type: Sequelize.UUID,
         onDelete: 'CASCADE',
