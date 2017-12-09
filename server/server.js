@@ -143,7 +143,7 @@ app.get('/deletePalace', deleteController.deletePalace)
 
 app.get('/getPalaces', getController.getPalaces)
 
-app.get('/getPalace', getController.getPalaces)
+app.get('/getPalace', getController.getPalace)
 
 app.post('/storeNode', postController.storeNode)
 
