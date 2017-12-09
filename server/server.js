@@ -129,7 +129,7 @@ app.use(webpackHotMiddleware(compiler, {
 // app.get('/user', controller.getController.searchForUser);
 
 
-// app.post('/getPalaces', controller.getController.getPalaces)
+app.post('/addPalace', postController.newPalace)
 
 
 app.listen(SERVER_PORT, () => console.log(`App listening on port ${SERVER_PORT}...`.yellow));

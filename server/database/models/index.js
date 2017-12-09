@@ -1,7 +1,9 @@
 'use strict';
+// https://tech.luc.id/sequelize-it-part-1-4bb752097861
 // helpful: https://www.duringthedrive.com/2017/05/06/models-migrations-sequelize-node/
 // https://codeburst.io/sequelize-migrations-setting-up-associations-985d29b61ee7
 // https://db-migrate.readthedocs.io/en/latest/Getting%20Started/usage/
+// https://asyoulook.com/computers%20&%20internet/node-js-my-models-for-db-using-sequelize-donand-39-t-doing-migration/119013
 
 var fs        = require('fs');
 var path      = require('path');

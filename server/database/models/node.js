@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   
   Node.associate = function(models) {
-        Node.belongsTo(models.Image, {
+        Node.belongsTo(models.Palace, {
           onDelete: 'CASCADE'
         });
   }

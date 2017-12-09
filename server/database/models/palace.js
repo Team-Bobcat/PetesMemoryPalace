@@ -7,11 +7,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.UUID, 
       defaultValue: DataTypes.UUIDV4
     },
-    name: DataTypes.STRING
+    name: DataTypes.STRING,
+    img: DataTypes.STRING
   });
     
   Palace.associate = function(models) {
-        Palace.hasMany(models.Image, {
+        Palace.hasMany(models.Node, {
 	        onDelete: 'CASCADE'
         });
         Palace.belongsTo(models.User, {
