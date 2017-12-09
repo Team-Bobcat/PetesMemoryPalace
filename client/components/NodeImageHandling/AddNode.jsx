@@ -23,8 +23,6 @@ class AddNode extends Component {
   //   })
   //
     render() {
-
-      console.log(this.props.addNode)
     return(
       <div>
         <form className="node-form" onSubmit={(e) => {this.props.addNode(e)}}>

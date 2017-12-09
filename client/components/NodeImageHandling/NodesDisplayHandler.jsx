@@ -2,7 +2,7 @@ import React from 'react';
 import Nodeicon from './Nodeicon';
 
 class NodesDisplayHandler extends React.Component {
-    
+
     render() {
       let x = 50;
       let y = 100;
@@ -12,12 +12,11 @@ class NodesDisplayHandler extends React.Component {
       let yHover = this.props.locYHover;
 
       let nodes = this.props.nodes;
-      console.log('nodes yoo: ', this.props.nodes)
       let count = 0;
       return (
         <div ref="elem" className="container">
           <div>
-            <img className="palace-image" onClick={this.props.onMouseClick} src="https://picsum.photos/200/300?image=1059" />
+            <img className="palace-image" onClick={this.props.onMouseClick} src={this.props.srcImg} />
           {/* need to render each dot and do onMouseOver for each */}
             {nodes.map( (node, idx) => {
               return (
