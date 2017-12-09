@@ -3,7 +3,7 @@ const express = require('express');
 const colors = require('colors');
 const path = require('path');
 const pg = require('pg');
-const controller = require('./controllers/controllers');
+// const controller = require('./database/controllers');
 const passport = require('passport');
 const configAuth = require('../config/auth.js');
 const FacebookStrategy = require('passport-facebook');
@@ -16,7 +16,7 @@ const SERVER_PORT = process.env.SERVER_PORT || 3000;
 const env = process.env.NODE_ENV || 'development';
 
 passport.serializeUser(function (user, done) {
-  console.log(user);
+  // console.log(user);
   done(null, user.id);
 });
 
@@ -27,7 +27,7 @@ passport.deserializeUser(function (id, done) {
   // (id, user) => {
   //   done(null.user);
   // }
-  console.log(id);
+  // console.log(id);
   done(null, false);
 });
 
@@ -41,7 +41,7 @@ passport.use(new FacebookStrategy({
     // User.findOrCreate({ facebookId: profile.id }, function (err, user) {
     //   return cb(err, user);
     // });
-    console.log(profile);
+    // console.log(profile);
     cb(null, profile);
   }
 ))
@@ -69,6 +69,15 @@ app.get('/auth/facebook/callback',
     res.redirect('/');
   }
 );
+
+app.get('/auth', (req, res) => {
+  console.log(req);
+  if (req.user) {
+    res.json(req.user);
+  } else {
+    res.json({});
+  }
+});
 
 if (env === 'development'){
   const webpack = require('webpack');
