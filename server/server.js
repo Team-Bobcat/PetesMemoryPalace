@@ -38,11 +38,11 @@ passport.use(new FacebookStrategy({
   },
   function(accessToken, refreshToken, profile, cb) {
     getController.searchForUser({ emails: profile.emails[0].value }, function (err, user) {
-      console.log('our:', user);
+      // console.log('our:', user);
       if (user) {
         cb(null, user)
       } else {
-        console.log('new user being made');
+        // console.log('new user being made');
         postController.newUser(profile.emails[0].value, profile.displayName, user => {
           cb(null, user);
         });
@@ -76,7 +76,7 @@ app.get('/auth/facebook/callback',
 );
 
 app.get('/addPalace', (req, res) => {
-  console.log(req.user);
+  // console.log(req.user);
   res.send(req.user);
 })
 
