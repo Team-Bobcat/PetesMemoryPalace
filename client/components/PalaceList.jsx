@@ -1,20 +1,19 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import { Link } from 'react-router-dom'
+import { Switch, Route, Link } from 'react-router-dom'
+import FullPalaceList from './FullPalaceList'
+import ImageView from './ImageView'
 
 class PalaceList extends Component {
-
+// Note to self: this will probably be a param off of the "PalaceList" route :beach
     render() {
       return(
-        <div>
-          <h1>PalaceList</h1>
-            <ul>
-              <li><Link to='/beach'>Beach</Link></li>
-              <li><Link to='/home'>Home</Link></li>
-              <li><Link to='/office'>Office</Link></li>
-            </ul>
-        </div>
+        <Switch>
+          <Route exact path='/PalaceList' component={FullPalaceList}/>
+          <Route path='/PalaceList/:number' component={ImageView}/>
+        </Switch>
       )
     }
 }
 export default PalaceList
+

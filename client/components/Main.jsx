@@ -14,8 +14,8 @@ class Main extends Component {
           <Switch>
           {/* <Route exact path='/' component={Home}/> */}
           {/* both /roster and /roster/:number begin with /roster */}
-
-          <Route path='/login' component={Login} />
+          <Route exact path='/' component={Login} />
+          {/*note - if logged in already, the 'root should probably take you to home*/}
           <Route path='/palacelist' component={PalaceList}/>
           </Switch>
         </main>
