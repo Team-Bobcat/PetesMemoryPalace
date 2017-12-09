@@ -7,18 +7,18 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.UUID, 
       defaultValue: DataTypes.UUIDV4
     },
-    name: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        Palace.hasMany(models.Image, {
+    name: DataTypes.STRING,
+    img: DataTypes.STRING,
+  });
+    
+  Palace.associate = function(models) {
+        Palace.hasMany(models.Node, {
 	        onDelete: 'CASCADE'
         });
         Palace.belongsTo(models.User, {
           onDelete: 'CASCADE'
         });
-      }
-    }
-  });
+  }
+    
   return Palace;
 };

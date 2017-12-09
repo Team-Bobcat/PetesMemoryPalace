@@ -53,13 +53,14 @@ module.exports = {
       endYearImgArray: {
         type: Sequelize.ARRAY(Sequelize.STRING)
       },
-      ConSTRINGId: {
+      PalaceId: {
         type: Sequelize.UUID,
         onDelete: 'CASCADE',
         references: {
-          model: 'Images',
+          model: 'Palaces',
           key: 'id'
-        }
+        },
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
