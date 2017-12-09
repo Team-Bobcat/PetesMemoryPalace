@@ -6,6 +6,7 @@ const pg = require('pg');
 
 const postController = require('./database/controllers/postController');
 const getController = require('./database/controllers/getController');
+const deleteController = require('./database/controllers/deleteController');
 
 const passport = require('passport');
 const configAuth = require('../config/auth.js');
@@ -129,7 +130,9 @@ app.use(webpackHotMiddleware(compiler, {
 // app.get('/user', controller.getController.searchForUser);
 
 
-app.post('/addPalace', postController.newPalace)
+app.get('/addPalace', getController.newPalace)
+
+app.get('/deletePalace', deleteController.deletePalace)
 
 
 app.listen(SERVER_PORT, () => console.log(`App listening on port ${SERVER_PORT}...`.yellow));

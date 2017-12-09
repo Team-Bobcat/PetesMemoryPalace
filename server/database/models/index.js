@@ -19,12 +19,6 @@ if (config.use_env_variable) {
   var sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
-// const sequelize = new Sequelize(`${process.env.DB_DB}`, `${process.env.DB_USER}`, `${process.env.DB_PASSWORD}`, {
-//   host: `${process.env.DB_HOST}`,
-//   dialect: 'postgres',
-//   logging: console.log
-// });
-
 fs
   .readdirSync(__dirname)
   .filter(file => {
@@ -43,5 +37,9 @@ Object.keys(db).forEach(modelName => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+// DANGEROUS!!!!
+// DANGEROUS!!! if uncommented:
+// sequelize.sync({force: true}); // DELETES AND RESETS DATABASE
 
 module.exports = db;

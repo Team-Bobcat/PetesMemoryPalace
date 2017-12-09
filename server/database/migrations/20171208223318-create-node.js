@@ -59,7 +59,8 @@ module.exports = {
         references: {
           model: 'Palaces',
           key: 'id'
-        }
+        },
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

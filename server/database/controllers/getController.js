@@ -10,6 +10,15 @@ dbFuncs.getPalaces = (req, res, next) => {
   })
 }  
 
+dbFuncs.newPalace = (req, res, next) => {
+  const palace = req.query.palace 
+  // console.log("IDDDDD", req.user.id);
+  db.Palace.create({name: palace, UserId: req.user.id})
+    .then(() =>
+      res.status(200).send('success')
+    );
+}
+
 dbFuncs.getImg = (req, res, next) => { 
 
 }

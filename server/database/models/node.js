@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     monthImgArray: {type: DataTypes.ARRAY(DataTypes.STRING)},
     dayImgArray: {type: DataTypes.ARRAY(DataTypes.STRING)},
     baseYearImgArray: {type: DataTypes.ARRAY(DataTypes.STRING)},
-    endYearImgArray: {type: DataTypes.ARRAY(DataTypes.STRING)}
+    endYearImgArray: {type: DataTypes.ARRAY(DataTypes.STRING)},
   });
   
   Node.associate = function(models) {
