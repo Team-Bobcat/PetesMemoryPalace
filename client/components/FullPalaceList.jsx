@@ -9,6 +9,11 @@ class FullPalaceList extends Component {
     this.state = {
       palaces: [],
     }
+    this.fetchPalaces = this.fetchPalaces.bind(this);
+    this.postPalace = this.postPalace.bind(this);
+  }
+  componentWillMount(){
+    this.fetchPalaces();
   }
   fetchPalaces(){
     fetch('/getPalaces',{
@@ -22,9 +27,9 @@ class FullPalaceList extends Component {
 
   postPalace(event){
     event.preventDefault();
-    const name = 'redondo';
-    const topic = 'seaanimals';
-    const img = 'jusin';
+    const name = event.target.querySelectorAll('input')[0].value;
+    const topic = event.target.querySelectorAll('input')[1].value;
+    const img = event.target.querySelectorAll('input')[2].value;
     fetch(`/addPalace?palace=${name}&topic=${topic}&img=${img}`, {
       method: 'GET',
       credentials: 'include',
@@ -48,7 +53,7 @@ class FullPalaceList extends Component {
             {/* </div> */}
           </li>
         <hr/>
-          {this.state.map((p, i) => {
+          {this.state.palaces.map((p, i) => {
               return(
                 <div className="flexbox">                  
                 <li className="palace-li" key={i} >
@@ -64,9 +69,9 @@ class FullPalaceList extends Component {
           {/*Add new node, currently just a placeholder*/}
           <div className="form-container">
             <form onSubmit={this.postPalace}>
-                <input className="input" type="text" component="input" placeholder="New Palace"/>
-                <input className="input" type="text" component="input" placeholder="New Topic"/>
-                <input className="input" type="text" component="input" placeholder="Image URL"/>
+                <input id="palace" className="input" type="text" component="input" placeholder="New Palace"/>
+                <input id="topic"className="input" type="text" component="input" placeholder="New Topic"/>
+                <input id="img" className="input" type="text" component="input" placeholder="Image URL"/>
 
                 <input className="btn-facebook btn btn-block" id="addNewPalace"  type="submit"/>
             </form>
