@@ -1,15 +1,61 @@
 body {
     background-color: rgb(109, 250, 255);
+    height: 100vh;    
 }
-.navbar{
+nav {
     list-style: none;
+    width: 100vw;
 }
+
 ul{
     list-style: none;
   }
-/* .palace-list-div{
-    text-align: center;
-} */
+
+nav li {
+    display: inline-flex;
+    text-decoration: none;
+    width: 100px;
+}
+
+#login img {
+    height: 100px;
+}
+
+#mainDiv {
+    height: 100vh;
+}
+
+.alignTop{
+    align-self: flex-start;
+}
+
+.alignBot{
+    align-self: flex-end;
+}
+
+main {
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    height: 90vh;
+    margin: 0 auto;
+}
+
+html {
+	margin: 0;
+	padding: 0;
+    }
+    
+body { 
+	font-family: 'Lucida Grande', 'Helvetica Neue', sans-serif;
+	line-height: 1.88889;
+	color: #555753; 
+	background: #fff no-repeat bottom right; 
+	margin: 0; 
+	padding: 0;
+	}
+
+
 /* INDIVIDUAL Palace List */
 .list-item-header{
     font-size: large;
@@ -25,7 +71,6 @@ ul{
   }
   .palace-li{
     min-width: 100%;
-    /* background-color: rgb(0, 217, 255); */
     background-color: inherit;
   }
 
