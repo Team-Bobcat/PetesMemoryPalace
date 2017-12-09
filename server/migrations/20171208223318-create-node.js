@@ -48,16 +48,16 @@ module.exports = {
         type: Sequelize.STRING
       },
       monthImgArray: {
-        type: Sequelize.INTERGER[]
+        type: Sequelize.ARRAY
       },
       dayImgArray: {
-        type: Sequelize.INTERGER[]
+        type: Sequelize.ARRAY
       },
       baseYearImgArray: {
-        type: Sequelize.INTERGER[]
+        type: Sequelize.ARRAY
       },
       endYearImgArray: {
-        type: Sequelize.INTERGER[]
+        type: Sequelize.ARRAY
       },
       ConSTRINGId: {
         type: Sequelize.UUID,

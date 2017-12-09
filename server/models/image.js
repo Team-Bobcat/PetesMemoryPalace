@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: DataTypes.UUIDV4
     },
     name: DataTypes.STRING,
-    img: DataTypes.BYTEA
+    img: DataTypes.BLOB
   }, {
     classMethods: {
       associate: function(models) {

@@ -7,11 +7,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.UUID, 
       defaultValue: DataTypes.UUIDV4
     },
-    nodeNum: DataTypes.INTERGER,
+    nodeNum: DataTypes.INTEGER,
     locX: DataTypes.STRING,
     locY: DataTypes.STRING,
     dateDescription: DataTypes.STRING,
-    date: {type: DataTypes.DATE, defaultValue: Sequelize.NOW},
+    date: {type: DataTypes.DATE, defaultValue: sequelize.NOW},
     monthWord: DataTypes.STRING,
     dayWord: DataTypes.STRING,
     baseYearWord: DataTypes.STRING,
@@ -20,10 +20,10 @@ module.exports = (sequelize, DataTypes) => {
     dayImg: DataTypes.STRING,
     baseYearImg: DataTypes.STRING,
     endYearImg: DataTypes.STRING,
-    monthImgArray: DataTypes.INTERGER[],
-    dayImgArray: DataTypes.INTERGER[],
-    baseYearImgArray: DataTypes.INTERGER[],
-    endYearImgArray: DataTypes.INTERGER[]
+    // monthImgArray: DataTypes.ARRAY,
+    // dayImgArray: DataTypes.ARRAY,
+    // baseYearImgArray: DataTypes.ARRAY,
+    // endYearImgArray: DataTypes.ARRAY
   }, {
     classMethods: {
       associate: function(models) {

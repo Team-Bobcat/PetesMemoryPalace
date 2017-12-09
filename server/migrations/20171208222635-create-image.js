@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       img: {
-        type: Sequelize.BYTEA
+        type: Sequelize.BLOB
       },
       ConSTRINGId: {
         type: Sequelize.UUID,
