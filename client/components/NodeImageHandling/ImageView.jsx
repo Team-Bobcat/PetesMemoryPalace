@@ -24,25 +24,20 @@ class ImageView extends Component {
       description: 'washing a tin cup'
     }
   this.handleOptionChange = this.handleOptionChange.bind(this);
+  this.handleInputChange = this.handleInputChange.bind(this);
   this.onMouseMove = this.onMouseMove.bind(this);
   this.onMouseClick = this.onMouseClick.bind(this);
+  this.addNode = this.addNode.bind(this); 
 
   }
   componentDidMount(){
     console.log('component mounted: Image view');
-    console.log(this.state);
+    console.log('NodeListAPI.nodeList: ', NodeListAPI.nodeList)
+    console.log('NodeListAPI.nodeList.length: ', NodeListAPI.nodeList.length)
+    this.setState({
+      nodes: NodeListAPI.nodeList,
+      id: NodeListAPI.nodeList.length});
   }
-  // //call the api
-  // let importedNodes = [];
-  // console.log(NodeListAPI.nodeList)
-  // // NodeListAPI.all().map( (node) => {
-  // //   console.log(node);
-  // //   nodes.push(node);
-  // // })
-
-
-  //   this.setState({nodes: importedNodes})
-  // }
 
   // will have to do differently with real API call - .all will need to be written here.
   // getAllNodes(NodeListAPI){
@@ -71,7 +66,7 @@ class ImageView extends Component {
         locXHover: e.screenX,
         locYHover: e.screenY
       })
-    } else { // ADD a new node
+    } else { // this.state.selectedOption === 'add' , add new node
       console.log('ADD NODE functionality here')
       console.log(e.screenX, e.screenY)
       let nodeCopy = this.state.nodes.slice()
@@ -109,24 +104,39 @@ class ImageView extends Component {
       })
     }
   }
+  handleInputChange(e){
+    e.preventDefault();         
+    const target = e.target;
+    console.log('target: ', target)
+    const value = target.value;
+    const name = target.name;
+    console.log('Input change name, value: ', name + value)
+    this.setState({
+      [name]: value
+    })
+  };
+  addNode(e){   // review how you're doing this -- should probably be doing a copy here
+    e.preventDefault();
+  
+    console.log('in the addnode function')
+    let tempNodes = this.state.nodes.slice();
 
+    // assemble data for todo
+    const node = {
+      nodeName: this.state.value,
+      description: this.state.description,
+    }
+    //update data
+    tempNodes.push(node)
+    NodeListAPI.nodeList.push(node)
+    
+    //make push to database
+    //update state
+    this.setState({
+      node: tempNode
+    });
+  }
 
-  // Routing, on hold for now - goes under the 'lower-half' class in render
-//   {NodeListAPI.nodeList.map( (node) => {
-//             {/* should be able to implement 'match url' to make dynamic*/}
-//             {/* <button><Link to={`${match.url}/${node.name}`}>{node.name}</Link>CLICK ME</button> */}
-//             <button><Link to={`/PalaceList/1/:${node.name}`}>{node.name}</Link>CLICK ME</button>
-//             })
-//             }
-//             {/*<NodeDescription nodes = {this.state.nodes} currentNode = {this.state.currentNode}/>
-//  */}
-/* <Switch>
-              <Route exact path='/PalaceRoute/1/Display' component={NodeDescription} />
-              <Route exact path='/PalaceRoute/1/Add' component={AddNode} />
-
-    //           {/*note - if logged in already, the 'root should probably take you to home*/
-  //            {/* <Route path='/palacelist' component={PalaceList}/> */}
-  //        </Switch> */
 
   render() {
     NodeListAPI.nodeList.map( (node) => {
@@ -137,29 +147,39 @@ class ImageView extends Component {
     if(this.state.selectedOption === 'display'){
       console.log('here')
       renderThis = <NodeDescription 
-                    name={this.state.name}
-                    description={this.state.description} />
+                      name={this.state.name}
+                      description={this.state.description} />
     }else{
-      renderThis = <AddNode />
+      renderThis = <AddNode 
+                      locX={this.state.locX}
+                      locY={this.state.locY}
+                      value={this.state.value}
+                      name={this.state.name}
+                      description={this.state.description}
+                      addNode={this.state.addNode}
+                      handleInputChange={this.state.handleInputChange}
+                    />
     }
       return(
         <div>
           <h1>Image View</h1>
-
-          <div className="radio">
-            <input type="radio" value="display" checked={this.state.selectedOption === 'display'} onChange={this.handleOptionChange} /><label htmlFor="display">Display Current</label>
-            <input type="radio" value="add" checked={this.state.selectedOption === 'add'} onChange={this.handleOptionChange} /><label htmlFor="add">Add New Node</label>
-          </div>
-          <div className="display">
-            <NodesDisplayHandler
-              nodes={this.state.nodes}
-              locX={this.state.locX}
-              locY={this.state.locY}
-              locXHover={this.state.locXHover}
-              locYHover={this.state.locYHover}
-              onMouseMove={this.onMouseMove}
-              onMouseClick={this.onMouseClick}
-              selectedOption={this.state.selectedOption} />
+          <div className="image-view-grid">
+            <div className="radio">
+              <input type="radio" value="display" checked={this.state.selectedOption === 'display'} onChange={this.handleOptionChange} /><label htmlFor="display">Display Current</label>
+              <br/>
+              <input type="radio" value="add" checked={this.state.selectedOption === 'add'} onChange={this.handleOptionChange} /><label htmlFor="add">Add New Node</label>
+            </div>
+            <div className="display">
+              <NodesDisplayHandler
+                nodes={this.state.nodes}
+                locX={this.state.locX}
+                locY={this.state.locY}
+                locXHover={this.state.locXHover}
+                locYHover={this.state.locYHover}
+                onMouseMove={this.onMouseMove}
+                onMouseClick={this.onMouseClick}
+                selectedOption={this.state.selectedOption} />
+            </div>
           </div>
           <div className="lower-half">
             {renderThis}

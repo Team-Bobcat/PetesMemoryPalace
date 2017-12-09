@@ -160,9 +160,17 @@ span {
     background-color: inherit;
     display: block;
     -webkit-column-break-inside: avoid;
-} */
 
-/* .description{
-    background-color: inherit;
-    -webkit-column-break-inside: avoid;
-} */
+  }*/
+
+ .image-view-grid{
+    display: grid;
+    grid-template-columns: 35% 65%;
+  }
+.radio{
+    color: white;
+}
+.display{
+    padding: 2px;
+    background-color: white;
+ }
