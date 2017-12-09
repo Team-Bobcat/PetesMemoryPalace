@@ -11,16 +11,11 @@ dbFuncs.getPalaces = (req, res, next) => {
 }  
 
 dbFuncs.newPalace = (req, res, next) => {  
-<<<<<<< HEAD
-  const palace = req.query.palace 
-  console.log("IDDDDD", req.query.palace);
-  db.Palace.create({name: palace, UserId: req.user.id})
-=======
   const palace = req.query.palace; 
   const img = req.query.img; 
+  const topic = req.query.topic; 
   // console.log("IDDDDD", req.user.id);
-  db.Palace.create({name: palace, UserId: req.user.id, img:img})
->>>>>>> b87867d3245f3f88ec1cdd23765eb1afbc1f3db2
+  db.Palace.create({name: palace, UserId: req.user.id, img:img, topic:topic})
     .then(() =>
       res.status(200).send('success')
     );
