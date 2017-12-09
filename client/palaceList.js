@@ -1,9 +1,24 @@
 const PalaceListAPI = {
   palaces: [
-    { id: 1, name: "Beach", image: "beachHouse.jpeg" },
-    { id: 2, name: "Office", image: "office1.jpeg" },
-    { id: 3, name: "Home", image: "bedroom1.jpeg" },
-    { id: 4, name: "Codesmith", image: "bedroom1.jpeg" }
+    { 
+      id: 1, 
+      name: "Beach",
+      description: "Presidents",
+      image: "beachHouse.jpeg",
+    },
+    { id: 2,
+      name: "Office",
+      description: "14 SuperFoods",
+      image: "office1.jpeg" 
+    },
+    { id: 3,
+      name: "Childhood Home",
+      description: "Family Birthdates",
+      image: "bedroom1.jpeg" },
+    { id: 4, 
+      name: "Codesmith", 
+      description: "random people's names",
+      image: "bedroom1.jpeg" }
     
   ],
   all: function(){
@@ -17,8 +32,6 @@ const PalaceListAPI = {
       p.name === name
     }
     return this.palaces.find(isPalace)
-    
   }
-
 }
 export default PalaceListAPI;

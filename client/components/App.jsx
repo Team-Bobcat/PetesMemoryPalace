@@ -13,7 +13,6 @@ class App extends Component {
           <h1 className="MainHead">Welcome to your Digital Memory Palace</h1>
           <Header />
           <Main />
-          <img src="../../office1.jpg"/>
         </div>
       )
     }
