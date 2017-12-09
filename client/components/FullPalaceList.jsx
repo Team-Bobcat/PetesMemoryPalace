@@ -35,6 +35,8 @@ class FullPalaceList extends Component {
                   </li>
                 )
             })}
+            {/*Add new node, currently just a placeholder*/}
+            <button>ADD NEW PALACE</button>
             </ul>
         </div>
       )

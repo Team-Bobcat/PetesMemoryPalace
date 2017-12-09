@@ -19,16 +19,16 @@ const config = {
         use: ['style-loader', 'css-loader'],
         test: /\.css$/
       },
-      // {test: /\.(jpe?g|png|gif|svg)$/i, loader: "file-loader?name=/images/[name].[ext]"},
-      {
-        test: /\.(jpe?g|png)$/,
-        use: {
-          loader: "url-loader",
-          options: {
-            limit: 25000,
-          },
-        },
-      }
+      {test: /\.(jpe?g|png|gif|svg)$/i, loader: "file-loader?name=/images/[name].[ext]"},
+      // {
+      //   test: /\.(jpe?g|png)$/,
+      //   use: {
+      //     loader: "url-loader",
+      //     options: {
+      //       limit: 25000,
+      //     },
+      //   },
+      // }
     ]
   },
   resolve: {
