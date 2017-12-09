@@ -75,10 +75,10 @@ app.get('/auth/facebook/callback',
   }
 );
 
-app.get('/addPalace', (req, res) => {
-  console.log(req.user);
-  res.send(req.user);
-})
+// app.get('/addPalace', (req, res) => {
+//   console.log(req.user);
+//   res.send(req.user);
+// })
 
 app.get('/auth', (req, res) => {
   // console.log(req);
@@ -134,7 +134,7 @@ app.use(webpackHotMiddleware(compiler, {
 
 // app.post('/newUser', controller.postController.newUser);
 
-// app.get('/user', controller.getController.searchForUser);
+// app.get('/user', controller.getController.searchForUser);`
 
 
 app.get('/addPalace', getController.newPalace)
