@@ -114,13 +114,6 @@ html {
 	padding: 0;
     }
 
-<<<<<<< HEAD
-/* .palace-list-div{
-    text-align: center;
-} */
-=======
-
->>>>>>> 9edfae3c25e3d52cd0896ff8240fdb323c809636
 /* INDIVIDUAL Palace List */
 .palace-list-div {
     width:500px;
@@ -159,3 +152,15 @@ html {
   
   /* display: inline-block;   */
   }
+
+ .image-view-grid{
+    display: grid;
+    grid-template-columns: 35% 65%;
+  }
+.radio{
+    color: white;
+}
+.display{
+    padding: 2px;
+    background-color: white;
+ }

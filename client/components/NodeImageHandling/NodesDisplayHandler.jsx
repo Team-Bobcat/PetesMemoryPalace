@@ -17,7 +17,7 @@ class NodesDisplayHandler extends React.Component {
       return (
         <div ref="elem" className="container">
           <div>
-            <img onClick={this.props.onMouseClick} width="80%" src="https://picsum.photos/200/300?image=1059" />
+            <img onClick={this.props.onMouseClick} width="100%" src="https://picsum.photos/200/300?image=1059" />
           {/* need to render each dot and do onMouseOver for each */}
             {nodes.map( (node, idx) => {
               return (
