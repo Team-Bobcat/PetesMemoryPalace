@@ -21,7 +21,7 @@ class NodesDisplayHandler extends React.Component {
           {/* need to render each dot and do onMouseOver for each */}
             {nodes.map( (node, idx) => {
               return (
-                <Nodeicon key={idx} id={idx} node={this.props.nodes} onMouseMove={this.props.onMouseMove} />
+                <Nodeicon key={idx} id={idx} node={this.props.nodes} onClick={this.props.onMouseClick} />
               )
             })}
           </div>
