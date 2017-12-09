@@ -16,7 +16,6 @@ class Login extends Component {
   }
 
   facebookLogin() {
-    console.log(this.state.user);
     if (this.state.user.displayName) {
       return <Redirect to='/palaceList'/>  
       // return <span id="loggedAs">Logged in as <strong>{this.state.user.displayName}</strong> | <a id="logout" href='/logout'>Logout</a></span>;

@@ -13,8 +13,10 @@ dbFuncs.getPalaces = (req, res, next) => {
 dbFuncs.newPalace = (req, res, next) => {  
   const palace = req.query.palace; 
   const img = req.query.img; 
+  const topic = req.query.topic; 
   // console.log("IDDDDD", req.user.id);
-  db.Palace.create({name: palace, UserId: req.user.id, img:img})
+  console.log
+  db.Palace.create({name: palace, UserId: req.user.id, img:img, topic:topic})
     .then(() =>
       res.status(200).send('success')
     );
@@ -24,7 +26,9 @@ dbFuncs.getPalace = (req, res, next) => {
   const palace = req.query.palace;
   db.Palace.findAll({where: {UserId: req.user.id, name: palace}}).then(palace => { // not testing this yet 
     // console.log(palaces);
-    res.send(palaceImg);
+    res.send(palace);
+    console.log("IDDDD", palace.id);
+    res.cookie('palaceId', palace.id);
   })
 }
 
