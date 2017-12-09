@@ -22,15 +22,13 @@ module.exports = (sequelize, DataTypes) => {
     dayImgArray: {type: DataTypes.ARRAY(DataTypes.STRING)},
     baseYearImgArray: {type: DataTypes.ARRAY(DataTypes.STRING)},
     endYearImgArray: {type: DataTypes.ARRAY(DataTypes.STRING)}
-  }, 
-  {
-    classMethods: {
-      associate: function(models) {
+  });
+  
+  Node.associate = function(models) {
         Node.belongsTo(models.Image, {
           onDelete: 'CASCADE'
         });
-      }
-    }
-  });
+  }
+  
   return Node;
 };

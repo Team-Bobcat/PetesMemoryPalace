@@ -9,17 +9,16 @@ module.exports = (sequelize, DataTypes) => {
     },
     name: DataTypes.STRING,
     img: DataTypes.BLOB
-  }, {
-    classMethods: {
-      associate: function(models) {
+  }); 
+    
+  Image.associate = function(models) {
         Image.hasMany(models.Node, {
 	        onDelete: 'CASCADE'
         });
         Image.belongsTo(models.Palace, {
           onDelete: 'CASCADE'
         });
-      }
-    }
-  });
+  };
+  
   return Image;
 };
