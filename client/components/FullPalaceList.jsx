@@ -14,14 +14,27 @@ class FullPalaceList extends Component {
       return(
         <div className="palace-list-div">
           <h1>PalaceList</h1>
-            <ul className="palace-ul">
-            {
-              PalaceListAPI.all().map( (p) => (
-                <li key={p.id} className="palace-li">
-                  <Link to={`/PalaceList/${p.id}`}>{p.name}</Link>
-                </li>
-              ))
-            }
+          <ul> 
+            {/*column headers section*/}
+            <li className="list-item-header">
+              <div className="list-item-header-grid"> 
+                <span className="location-header">Palace Location</span> 
+                <span className="topic-header">Topic Stored</span>
+              </div>
+            </li>
+          <hr/>
+            {PalaceListAPI.all().map( (p) => {
+                return(
+                  <li className="palace-li" key={p.id} >
+                    <div className="palace-li-grid">
+                      <Link to={`/PalaceList/${p.id}`}>
+                        <span className="name">{p.name}</span>
+                        <span className="description">{p.description}</span>
+                      </Link>
+                    </div>
+                  </li>
+                )
+            })}
             </ul>
         </div>
       )
