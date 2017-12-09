@@ -27,28 +27,29 @@ class AddNode extends Component {
       console.log(this.props.addNode)
     return(
       <div>
-        <form onSubmit={(e) => {this.props.addNode(e)}}>
+        <form className="node-form" onSubmit={(e) => {this.props.addNode(e)}}>
         <br />
-        <label>
-          Add Node Name
+        <label className="node-input-labels">
           <input
               id="node-name"
+              className="image-view-input"
               name="name"
               type="text"
-              placeholder="give me a name"
+              placeholder="Node Name"
               onChange={this.props.handleInputChange} />
         </label>
         <br />
-        <label>
-          Add Description Name
+        <label className="node-input-labels">
           <input
               id="node-description"
+              className="image-view-input"
               name="description"
               type="text"
-              placeholder="give me a description"
+              placeholder="Node description"
               onChange={this.props.handleInputChange} />
         </label>
-          <input id="submit" type="submit" value="Submit" />
+        <br />
+          <input className="btn-facebook btn btn-block btn-social" id="submit" type="submit" value="Submit" />
         </form>
       </div>
     )
