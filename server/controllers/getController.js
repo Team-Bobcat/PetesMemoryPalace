@@ -1,10 +1,10 @@
-const models = require('./../models/index');
+const db = require('./../models/index');
 
 const dbFuncs = {};
 
 dbFuncs.getPalaces = (req, res, next) => {
   console.log('getting palaces');
-  models.Palace.findAll().then(palaces => {
+  db.Palace.findAll().then(palaces => {
     console.log(palaces);
     res.send(palaces, 200);
   })

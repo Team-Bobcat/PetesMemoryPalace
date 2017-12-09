@@ -1,20 +1,20 @@
-const models = require('./../models/index');
+const db = require('./../models/index');
 
 const dbFuncs = {};
 
 dbFuncs.newUser = (req, res, next) => {
-  
+  const email = req.query.email;
+  const displayName = req.query.displayName;
+  db.User.create({email: email, displayName: displayName});
+  res.send(200).send("user created successfully");
 }
 
 dbFuncs.newPalace = (req, res, next) => {
-  res.send(200);
-  console.log('creating palace');
-  models.Palace.create({name: "Beach House"});
-  res.send("Created palace", 200);
+
 }
 
 dbFuncs.newImage = (req, res, next) => {
-  
+
 }
 
 dbFuncs.storeMemory = (req, res, next) => {
