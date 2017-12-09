@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { Switch, Route, Link } from 'react-router-dom'
 import FullPalaceList from './FullPalaceList'
-import ImageView from './ImageView'
+import ImageView from './NodeImageHandling/ImageView'
 
 class PalaceList extends Component {
 // Note to self: this will probably be a param off of the "PalaceList" route :beach
