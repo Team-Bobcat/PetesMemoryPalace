@@ -43,12 +43,12 @@ app.use(webpackHotMiddleware(compiler, {
   });
 }
 
-console.log(controller.getController.getPalaces);
-controller.getController.getPalaces();
+// console.log(controller.getController.getPalaces);
+// controller.getController.getPalaces();
 
-app.post('/addToPalaces', controller.postController.newPalace)
+// app.post('/addToPalaces', controller.postController.newPalace)
 
-app.post('/getPalaces', controller.getController.getPalaces)
+// app.post('/getPalaces', controller.getController.getPalaces)
 
 
 app.listen(SERVER_PORT, () => console.log(`App listening on port ${SERVER_PORT}...`.yellow));
