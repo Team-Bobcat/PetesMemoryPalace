@@ -1,10 +1,12 @@
+require('dotenv').config()
 const express = require('express');
 const colors = require('colors');
 const path = require('path');
+const pg = require('pg');
+const controller = require('./controllers/controllers');
 const passport = require('passport');
 const configAuth = require('../config/auth.js');
 const FacebookStrategy = require('passport-facebook');
-const controller = require('./database/controller');
 const session = require("express-session");
 const bodyParser = require("body-parser");
 const cookieParser = require('cookie-parser');
@@ -100,5 +102,13 @@ app.use(webpackHotMiddleware(compiler, {
     res.sendFile(path.join(__dirname, '../build', 'index.html'));
   });
 }
+
+// console.log(controller.getController.getPalaces);
+// controller.getController.getPalaces();
+
+// app.post('/addToPalaces', controller.postController.newPalace)
+
+// app.post('/getPalaces', controller.getController.getPalaces)
+
 
 app.listen(SERVER_PORT, () => console.log(`App listening on port ${SERVER_PORT}...`.yellow));
