@@ -13,8 +13,9 @@ dbFuncs.getPalaces = (req, res, next) => {
 dbFuncs.newPalace = (req, res, next) => {  
   const palace = req.query.palace; 
   const img = req.query.img; 
+  const topic = req.query.topic; 
   // console.log("IDDDDD", req.user.id);
-  db.Palace.create({name: palace, UserId: req.user.id, img:img})
+  db.Palace.create({name: palace, UserId: req.user.id, img:img, topic:topic})
     .then(() =>
       res.status(200).send('success')
     );
