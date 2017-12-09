@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 'react-router'
+import { Router, Route, Link, IndexRoute, hashHistory, browserHistory, Redirect, } from 'react-router'
 
 class Login extends Component {
   constructor(props) {
@@ -18,13 +18,16 @@ class Login extends Component {
   facebookLogin() {
     console.log(this.state.user);
     if (this.state.user.displayName) {
-        return <span>Logged in as <strong>{this.state.user.displayName}</strong> | <a href='/logout'>Logout</a></span>;
+      return <Redirect to='/palaceList'/>  
+      // return <span id="loggedAs">Logged in as <strong>{this.state.user.displayName}</strong> | <a id="logout" href='/logout'>Logout</a></span>;
     } else {
     return (
     <div>
-      <a className="btn btn-block btn-social btn-facebook" href="/auth/facebook">Sign in with Facebook</a>
+      <a className="btn btn-block btn-social btn-facebook" href="/auth/facebook"><span className="fa fa-facebook"></span>Sign in with Facebook</a>
       <br/>
-      <a className="btn btn-block btn-social btn-google" href="/auth/facebook">Sign in with Google </a>
+      <a className="btn btn-block btn-social btn-google" href="/auth/facebook"><span className="fa fa-google"></span>Sign in with Google </a>
+      <br/>
+      <a className="btn btn-block btn-social btn-instagram" href="/auth/facebook"><span className="fa fa-instagram"></span>Sign in with Instagram</a>
     </div>);
     }
   }

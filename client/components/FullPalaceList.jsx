@@ -37,7 +37,16 @@ class FullPalaceList extends Component {
                   </div>)
             })}
             {/*Add new node, currently just a placeholder*/}
-            <button className="btn-facebook btn btn-block btn-social" id="addNewPalace">ADD NEW PALACE</button>
+            <div className="form-container">
+              <form>
+                  <input className="input" type="text" component="input" placeholder="New Palace"/>
+                  <input className="input" type="text" component="input" placeholder="New Topic"/>
+                  <input className="input" type="text" component="input" placeholder="Image URL"/>
+
+                  <input className="btn-facebook btn btn-block btn-social" id="addNewPalace"  type="submit"/>
+              </form>
+            </div>
+            {/* <button className="btn-facebook btn btn-block btn-social" id="addNewPalace">ADD NEW PALACE</button> */}
             </ul>
         </div>
       )
