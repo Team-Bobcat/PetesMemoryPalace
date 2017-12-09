@@ -10,15 +10,15 @@ class Login extends Component {
     };
   }
   componentWillMount() {
-    fetch('/auth', {credentials: 'include'}).then(response => console.log(response.json()))
-        // .then(user => this.setState({ user }));
+    fetch('/auth', {credentials: 'include'}).then(response => response.json())
+        .then(user => this.setState({ user }));
         
   }
 
   facebookLogin() {
     console.log(this.state.user);
-    if (this.state.user.name) {
-        return <span>Logged in as <strong>{this.state.user.name.replace(/"/g, '')}</strong> | <a href='/logout'>Logout</a></span>;
+    if (this.state.user.displayName) {
+        return <span>Logged in as <strong>{this.state.user.displayName}</strong> | <a href='/logout'>Logout</a></span>;
     } else {
         return <a href="/auth/facebook"><img src="https://scontent-lax3-2.xx.fbcdn.net/v/t39.2365-6/17639236_1785253958471956_282550797298827264_n.png?oh=499251858fbeca5f9770531c16da6e89&oe=5A89FFEA" /></a>;
     }

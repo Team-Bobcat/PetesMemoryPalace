@@ -3,7 +3,10 @@ const express = require('express');
 const colors = require('colors');
 const path = require('path');
 const pg = require('pg');
-// const controller = require('./database/controllers');
+
+const postController = require('./database/controllers/postController');
+const getController = require('./database/controllers/getController');
+
 const passport = require('passport');
 const configAuth = require('../config/auth.js');
 const FacebookStrategy = require('passport-facebook');
@@ -16,19 +19,14 @@ const SERVER_PORT = process.env.SERVER_PORT || 3000;
 const env = process.env.NODE_ENV || 'development';
 
 passport.serializeUser(function (user, done) {
-  // console.log(user);
-  done(null, user.id);
+  done(null, user);
 });
 
-passport.deserializeUser(function (id, done) {
-  // controller.getUser(id, user => {
-  //   done(null, user);
-  // });
-  // (id, user) => {
-  //   done(null.user);
-  // }
-  // console.log(id);
-  done(null, false);
+passport.deserializeUser(function(id, done) {
+  // console.log('this: ', id);
+  getController.searchForUser({emails: id.email}, user => {
+    done(null, user);
+  });
 });
 
 passport.use(new FacebookStrategy({
@@ -38,11 +36,15 @@ passport.use(new FacebookStrategy({
   profileFields: ['id', 'name', 'displayName', 'photos', 'emails', 'friends'],
   },
   function(accessToken, refreshToken, profile, cb) {
-    // User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-    //   return cb(err, user);
-    // });
-    // console.log(profile);
-    cb(null, profile);
+    getController.searchForUser({ emails: profile.emails[0].value }, function (err, user) {
+      if (user) {
+        cb(null, user)
+      } else {
+        postController.newUser(profile.emails[0].value, profile.displayName, user => {
+          cb(null, user);
+        });
+      }
+    });
   }
 ))
 
@@ -71,11 +73,18 @@ app.get('/auth/facebook/callback',
 );
 
 app.get('/auth', (req, res) => {
-  console.log(req);
+  // console.log(req);
   if (req.user) {
     res.json(req.user);
   } else {
     res.json({});
+  }
+});
+
+app.get('/logout', (req, res) => {
+  if (req.user) {
+    req.logout();
+    res.redirect('/');
   }
 });
 
@@ -115,9 +124,9 @@ app.use(webpackHotMiddleware(compiler, {
 // console.log(controller.getController.getPalaces);
 // controller.postController.newUser();
 
-app.post('/newUser', controller.postController.newUser);
+// app.post('/newUser', controller.postController.newUser);
 
-app.get('/user', controller.getController.searchForUser);
+// app.get('/user', controller.getController.searchForUser);
 
 
 // app.post('/getPalaces', controller.getController.getPalaces)
