@@ -53,9 +53,13 @@ body {
 	padding: 0;
 	}
 
+<<<<<<< HEAD
 /* .palace-list-div{
     text-align: center;
 } */
+=======
+
+>>>>>>> 9edfae3c25e3d52cd0896ff8240fdb323c809636
 /* INDIVIDUAL Palace List */
 .list-item-header{
     font-size: large;
@@ -71,7 +75,6 @@ body {
   }
   .palace-li{
     min-width: 100%;
-    /* background-color: rgb(0, 217, 255); */
     background-color: inherit;
   }
 
