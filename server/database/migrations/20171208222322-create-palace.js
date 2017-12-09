@@ -9,15 +9,23 @@ module.exports = {
         defaultValue: Sequelize.UUIDV4
       },
       name: {
+        type: DataTypes.STRING, 
+        allowNull: false
+      },
+      img: {
         type: Sequelize.STRING
       },
+      topic: {
+        type: Sequelize.STRING
+      },     
       UserId: {
         type: Sequelize.UUID,
         onDelete: 'CASCADE',
         references: {
           model: 'Users',
           key: 'id'
-        }
+        },
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

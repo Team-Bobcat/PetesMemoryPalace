@@ -6,6 +6,7 @@ const pg = require('pg');
 
 const postController = require('./database/controllers/postController');
 const getController = require('./database/controllers/getController');
+const deleteController = require('./database/controllers/deleteController');
 
 const passport = require('passport');
 const configAuth = require('../config/auth.js');
@@ -24,9 +25,9 @@ passport.serializeUser(function (user, done) {
 
 passport.deserializeUser(function(id, done) {
   // console.log('this: ', id);
-  getController.searchForUser({emails: id.email}, user => {
+  getController.searchForUser({emails: id.email}, ((bob, user) => {
     done(null, user);
-  });
+  }));
 });
 
 passport.use(new FacebookStrategy({
@@ -37,9 +38,11 @@ passport.use(new FacebookStrategy({
   },
   function(accessToken, refreshToken, profile, cb) {
     getController.searchForUser({ emails: profile.emails[0].value }, function (err, user) {
+      console.log('our:', user);
       if (user) {
         cb(null, user)
       } else {
+        console.log('new user being made');
         postController.newUser(profile.emails[0].value, profile.displayName, user => {
           cb(null, user);
         });
@@ -72,10 +75,10 @@ app.get('/auth/facebook/callback',
   }
 );
 
-app.get('/addPalace', (req, res) => {
-  console.log(req.user);
-  res.send(req.user);
-})
+// app.get('/addPalace', (req, res) => {
+//   console.log(req.user);
+//   res.send(req.user);
+// })
 
 app.get('/auth', (req, res) => {
   // console.log(req);
@@ -131,10 +134,16 @@ app.use(webpackHotMiddleware(compiler, {
 
 // app.post('/newUser', controller.postController.newUser);
 
-// app.get('/user', controller.getController.searchForUser);
+// app.get('/user', controller.getController.searchForUser);`
 
 
-// app.post('/getPalaces', controller.getController.getPalaces)
+app.get('/addPalace', getController.newPalace)
+
+app.get('/deletePalace', deleteController.deletePalace)
+
+app.get('/getPalaces', getController.getPalaces)
+
+app.get('/getPalace', getController.getPalaces)
 
 
 app.listen(SERVER_PORT, () => console.log(`App listening on port ${SERVER_PORT}...`.yellow));
