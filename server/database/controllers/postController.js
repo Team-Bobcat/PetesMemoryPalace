@@ -17,21 +17,26 @@ dbFuncs.newUser = (userEmail, name, cb) => {
 }
 
 dbFuncs.newPalace = (req, res, next) => {
-  console.log("IDDDDD");
+  // console.log("IDDDDD");
   
-  console.log("IDDDDD", req.user);
-  db.Palace.create({userID: 12, name: "Beach House"})
-    .then(() =>
-      res.status(200).send('success')
-    );
+  // console.log("IDDDDD", req.user);
+  // db.Palace.create({userID: 12, name: "Beach House"})
+  //   .then(() =>
+  //     res.status(200).send('success')
+  //   );
 }
 
 dbFuncs.newImage = (req, res, next) => {
 
 }
 
-dbFuncs.storeMemory = (req, res, next) => {
-
+dbFuncs.storeNode = (req, res, next) => {
+  // req.body.PalaceId = req.cookies('palaceId');
+  req.body.PalaceId = '9eec5d26-b58d-4707-a8d4-455f0fcf0583';
+  db.Node.create(req.body)
+    .then(() => {
+      res.status(200).send('memory stored');
+    })
 }
 
 module.exports = dbFuncs;
