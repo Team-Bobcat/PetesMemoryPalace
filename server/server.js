@@ -75,17 +75,10 @@ app.get('/auth/facebook/callback',
   }
 );
 
-<<<<<<< HEAD
-app.get('/addPalace', (req, res) => {
-  // console.log(req.user);
-  res.send(req.user);
-})
-=======
 // app.get('/addPalace', (req, res) => {
 //   console.log(req.user);
 //   res.send(req.user);
 // })
->>>>>>> b87867d3245f3f88ec1cdd23765eb1afbc1f3db2
 
 app.get('/auth', (req, res) => {
   // console.log(req);
