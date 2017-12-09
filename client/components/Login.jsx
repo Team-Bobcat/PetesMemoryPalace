@@ -7,9 +7,14 @@ class Login extends Component {
     render() {
       return(
         <div>
-          <input type="text" placeholder="Enter username"/>
-          <input type="text" placeholder="Enter password"/>
-
+          <p>Please Sign in</p>
+          <form>
+            <input type="text" placeholder="Enter username"/>
+            <br/>
+            <input type="text" placeholder="Enter password"/>
+            <br/>
+            <input type="submit" value="Login"/>
+          </form>
         </div>
       )
     }
