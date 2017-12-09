@@ -6,7 +6,7 @@ dbFuncs.newUser = (req, res, next) => {
   const email = req.query.email;
   const displayName = req.query.displayName;
   db.User.create({email: email, displayName: displayName});
-  res.send(200).send("user created successfully");
+  res.status(200).send("user created successfully");
 }
 
 dbFuncs.newPalace = (req, res, next) => {

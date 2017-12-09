@@ -108,6 +108,9 @@ app.use(webpackHotMiddleware(compiler, {
 
 app.post('/newUser', controller.postController.newUser);
 
+app.get('/user', controller.getController.searchForUser);
+
+
 // app.post('/getPalaces', controller.getController.getPalaces)
 
 
