@@ -8,16 +8,16 @@ const PalaceListAPI = {
     },
     { id: 2,
       name: "Office",
-      description: "14 SuperFoods",
+      description: "14 Superfoods",
       image: "office1.jpeg" 
     },
     { id: 3,
       name: "Childhood Home",
-      description: "Family Birthdates",
+      description: "Family Birthdays",
       image: "bedroom1.jpeg" },
     { id: 4, 
       name: "Codesmith", 
-      description: "random people's names",
+      description: "Cohort 18",
       image: "bedroom1.jpeg" }
     
   ],

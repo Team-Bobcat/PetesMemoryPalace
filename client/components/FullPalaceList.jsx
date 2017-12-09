@@ -13,30 +13,31 @@ class FullPalaceList extends Component {
       })
       return(
         <div className="palace-list-div">
-          <h1>PalaceList</h1>
+          <h1>Palace List</h1>
           <ul> 
             {/*column headers section*/}
-            <li className="list-item-header">
-              <div className="list-item-header-grid"> 
-                <span className="location-header">Palace Location</span> 
-                <span className="topic-header">Topic Stored</span>
-              </div>
+            <li className="palace-li">
+              {/* <div className="flexbox"> */}
+                <span className="location-header"><b>Palace Location</b></span> 
+                <span className="topic-header"><b>Topic Stored</b></span>
+              {/* </div> */}
             </li>
           <hr/>
             {PalaceListAPI.all().map( (p) => {
                 return(
+                  <div className="flexbox">                  
                   <li className="palace-li" key={p.id} >
-                    <div className="palace-li-grid">
                       <Link to={`/PalaceList/${p.id}`}>
                         <span className="name">{p.name}</span>
-                        <span className="description">{p.description}</span>
                       </Link>
-                    </div>
-                  </li>
-                )
+                      <Link to={`/PalaceList/${p.id}`}>
+                      <span className="description">{p.description}</span>
+                      </Link>
+                 </li>
+                  </div>)
             })}
             {/*Add new node, currently just a placeholder*/}
-            <button>ADD NEW PALACE</button>
+            <button className="btn-facebook btn btn-block btn-social" id="addNewPalace">ADD NEW PALACE</button>
             </ul>
         </div>
       )
