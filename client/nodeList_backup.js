@@ -34,7 +34,7 @@ const NodeListAPIBackup = {
     },
     { 
       id: 5, 
-      name: "James Monroe", 
+     nodeNname: "James Monroe", 
       description: "Imagine marilyn monroe (maybe half james bond, to remember first name",
       image: "https://giphy.com/embed/oM8CvBlVubezC",
       locX: "110px",

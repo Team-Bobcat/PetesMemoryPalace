@@ -25,7 +25,7 @@ class ImageView extends Component {
     }
   this.handleOptionChange = this.handleOptionChange.bind(this);
   this.handleInputChange = this.handleInputChange.bind(this);
-  this.onMouseMove = this.onMouseMove.bind(this);
+  // this.onMouseMove = this.onMouseMove.bind(this);
   this.onMouseClick = this.onMouseClick.bind(this);
   this.addNode = this.addNode.bind(this); 
 
@@ -44,31 +44,41 @@ class ImageView extends Component {
   //   return NodeListAPI.
   // }
   handleOptionChange(changeEvent) {
-    console.log(changeEvent.target.value);
     this.setState({
       selectedOption: changeEvent.target.value
     });
   }
-
-  onMouseMove(e) {
-    console.log(e.screenX, e.screenY)
+  handleInputChange(e){
+    e.preventDefault();
+    const target = e.target;
+    const value = target.value;
+    let name = target.name;
+    console.log('name, value: ', name + ' ' + value)
     this.setState({
-      locXHover: e.screenX,
-      locYHover: e.screenY
+      [name]: value
     })
-  }
+  };
+
+  // onMouseMove(e) {
+  //   // console.log(e.screenX, e.screenY)
+  //   this.setState({
+  //     locXHover: e.screenX,
+  //     locYHover: e.screenY
+  //   })
+  // }
   // handles adding and viewing node info
   onMouseClick(e) {
     if(this.state.selectedOption === 'display'){
       console.log('DISPLAY CURRENT NODE functionality here')
-      console.log(e.screenX, e.screenY)
+      // console.log(e.screenX, e.screenY)
       this.setState({
         locXHover: e.screenX,
         locYHover: e.screenY
       })
+      console.log('e: ',e)
     } else { // this.state.selectedOption === 'add' , add new node
-      console.log('ADD NODE functionality here')
-      console.log(e.screenX, e.screenY)
+      console.log('ADD NODE, adding locations to temp-state');
+      // let createNewNode = new Node; 
       let nodeCopy = this.state.nodes.slice()
 
       //create new node at the coordinates
@@ -83,64 +93,57 @@ class ImageView extends Component {
         locY: e.screenY
       }
       nodeCopy.push(nodeAdd);
-      //make push to database  - this should probably go on the SUBMIT BUTTON SECTION, so all data loaded
-      // fetch('http://localhost:8080/api', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json'
-      //   },
-      //   body: JSON.stringify(nodeAdd)
-      // }).then((res) => {
-      //   console.log("this is res", res)
-      // }).catch((err) => {
-      //   console.log(err)
-      // });
-
-
-      //update state
       this.setState({
-        nodes: nodeCopy,
-        id: counter
+        locX: e.screenX,
+        locY: e.screenY,
       })
     }
   }
-  handleInputChange(e){
-    e.preventDefault();         
-    const target = e.target;
-    console.log('target: ', target)
-    const value = target.value;
-    const name = target.name;
-    console.log('Input change name, value: ', name + value)
-    this.setState({
-      [name]: value
-    })
-  };
+
   addNode(e){   // review how you're doing this -- should probably be doing a copy here
     e.preventDefault();
-  
-    console.log('in the addnode function')
+    e.stopPropagation();
+    console.log('submit')
     let tempNodes = this.state.nodes.slice();
-
+    let len = tempNodes.length;
+    let counter = this.state.id;
     // assemble data for todo
     const node = {
-      nodeName: this.state.value,
+      id: counter,
+      name: this.state.name,
       description: this.state.description,
+      image: 'placeholder',
+      locX: this.state.locX,
+      locY: this.state.locY,
     }
     //update data
     tempNodes.push(node)
     NodeListAPI.nodeList.push(node)
-    
+
     //make push to database
+    // fetch('http://localhost:8080/api', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(nodeAdd)
+    // }).then((res) => {
+    //   console.log("this is res", res)
+    // }).catch((err) => {
+    //   console.log(err)
+    // });
+    counter += 1;
     //update state
     this.setState({
-      node: tempNode
+      nodes: tempNodes,
+      id: counter
     });
   }
 
 
   render() {
     NodeListAPI.nodeList.map( (node) => {
-      console.log('node name:', node.name)
+      console.log('name:', node.name)
       console.log('node id:', node.id)
       })
     var renderThis;
@@ -156,8 +159,8 @@ class ImageView extends Component {
                       value={this.state.value}
                       name={this.state.name}
                       description={this.state.description}
-                      addNode={this.state.addNode}
-                      handleInputChange={this.state.handleInputChange}
+                      addNode={this.addNode}
+                      handleInputChange={this.handleInputChange}
                     />
     }
       return(
