@@ -72,6 +72,11 @@ app.get('/auth/facebook/callback',
   }
 );
 
+app.get('/addPalace', (req, res) => {
+  console.log(req.user);
+  res.send(req.user);
+})
+
 app.get('/auth', (req, res) => {
   // console.log(req);
   if (req.user) {
