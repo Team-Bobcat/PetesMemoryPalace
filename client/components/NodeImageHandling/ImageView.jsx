@@ -75,9 +75,7 @@ class ImageView extends Component {
         locXHover: e.screenX,
         locYHover: e.screenY
       })
-      console.log('e: ',e)
     } else { // this.state.selectedOption === 'add' , add new node
-      console.log('ADD NODE, adding locations to temp-state');
       // let createNewNode = new Node; 
       let nodeCopy = this.state.nodes.slice()
 
@@ -94,6 +92,7 @@ class ImageView extends Component {
       }
       nodeCopy.push(nodeAdd);
       this.setState({
+        id: counter,
         locX: e.screenX,
         locY: e.screenY,
       })
@@ -107,6 +106,7 @@ class ImageView extends Component {
     let tempNodes = this.state.nodes.slice();
     let len = tempNodes.length;
     let counter = this.state.id;
+    console.log('counter: in addNode: ', counter)
     // assemble data for todo
     const node = {
       id: counter,
@@ -136,7 +136,9 @@ class ImageView extends Component {
     //update state
     this.setState({
       nodes: tempNodes,
-      id: counter
+      id: counter,
+      name: '',
+      description: ''
     });
   }
 
@@ -164,13 +166,15 @@ class ImageView extends Component {
                     />
     }
       return(
-        <div>
-          <h1>Image View</h1>
+        <div className="image-view-vert-grid">
+          <div className="head-spacer">
+            <h1 className="image-view-h1">Image View</h1>
+          </div>
           <div className="image-view-grid">
             <div className="radio">
-              <input type="radio" value="display" checked={this.state.selectedOption === 'display'} onChange={this.handleOptionChange} /><label htmlFor="display">Display Current</label>
+              <input className="radio-btn" type="radio" value="display" checked={this.state.selectedOption === 'display'} onChange={this.handleOptionChange} /><label className="radio-label" htmlFor="display">Display Current</label>
               <br/>
-              <input type="radio" value="add" checked={this.state.selectedOption === 'add'} onChange={this.handleOptionChange} /><label htmlFor="add">Add New Node</label>
+              <input className="radio-btn" type="radio" value="add" checked={this.state.selectedOption === 'add'} onChange={this.handleOptionChange} /><label className="radio-label" htmlFor="add">Add New Node</label>
             </div>
             <div className="display">
               <NodesDisplayHandler

@@ -12,7 +12,7 @@ class NodeList extends Component {
   render() {
 
     return(
-      <div>
+      <div className="node-info-display">
         <h4><strong>Name:</strong>{this.props.name}</h4> 
         <p><strong>Descripion:</strong>{this.props.description}</p>
       </div>
