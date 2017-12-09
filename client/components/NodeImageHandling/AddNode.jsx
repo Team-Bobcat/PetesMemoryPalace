@@ -23,19 +23,20 @@ class AddNode extends Component {
   //   })
   //
     render() {
-    console.log('in ADD NODE')
+
+      console.log(this.props.addNode)
     return(
       <div>
-        <form onSubmit={this.props.addNode}>
+        <form onSubmit={(e) => {this.props.addNode(e)}}>
         <br />
         <label>
           Add Node Name
           <input
               id="node-name"
+              name="name"
               type="text"
               placeholder="give me a name"
-              name={this.props.value}
-              onChange={this.handleInputChange} />
+              onChange={this.props.handleInputChange} />
         </label>
         <br />
         <label>
@@ -45,8 +46,7 @@ class AddNode extends Component {
               name="description"
               type="text"
               placeholder="give me a description"
-              description={this.props.value}
-              onChange={this.handleInputChange} />
+              onChange={this.props.handleInputChange} />
         </label>
           <input id="submit" type="submit" value="Submit" />
         </form>
