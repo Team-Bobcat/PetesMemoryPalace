@@ -298,7 +298,8 @@ color: #02020a;
     padding-top: 5px;
 }
 .palace-image{
-    height: fit-content;
+    max-width: 500px;
+    max-height: auto;
 }
 .node-info-display{
     padding-top: 5px;
