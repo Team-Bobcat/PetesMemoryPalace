@@ -4,11 +4,20 @@ const dbFuncs = {};
 
 dbFuncs.getPalaces = (req, res, next) => {
   console.log('getting palaces');
-  db.Palace.findAll().then(palaces => { // not testing this yet 
+  db.Palace.findAll({where: {UserId: req.user.id}}).then(palaces => { // not testing this yet 
     console.log(palaces);
     res.send(palaces, 200);
   })
 }  
+
+dbFuncs.newPalace = (req, res, next) => {  
+  const palace = req.query.palace 
+  // console.log("IDDDDD", req.user.id);
+  db.Palace.create({name: palace, UserId: req.user.id})
+    .then(() =>
+      res.status(200).send('success')
+    );
+}
 
 dbFuncs.getImg = (req, res, next) => { 
 

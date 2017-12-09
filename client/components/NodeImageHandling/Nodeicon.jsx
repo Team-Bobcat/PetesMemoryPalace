@@ -20,9 +20,8 @@ class Nodeicon extends React.Component {
       console.log('id: '+ id + ', x: ' + xSpot + ', y: ' + ySpot)
       return (
         <a className="dots-anchor" href="#">
-        <h1>redDot placeholder in nodeIcon...</h1>
-        <img className="dots" style={dotStyle} onMouseOver={this.props.onMouseMove} src="https://imgur.com/pmzS0Kn"/>
-          {/* <img className="dots" style={dotStyle} onMouseOver={this.props.onMouseMove} src='http://www.clker.com/cliparts/T/G/b/7/r/A/red-dot-md.png'/> */}
+        {/* <h1>redDot placeholder: id: {id}, x: {xSpot}, y: {ySpot}</h1> */}
+        <img className="dots" id={id} style={dotStyle} onMouseOver={this.props.onMouseMove} src='http://www.clker.com/cliparts/T/G/b/7/r/A/red-dot-md.png'/>
         </a>
       )  
     }
