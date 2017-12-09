@@ -7,8 +7,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.UUID, 
       defaultValue: DataTypes.UUIDV4
     },
-    name: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING, 
+      allowNull: false
+    },
     img: DataTypes.STRING,
+    topic: DataTypes.STRING
   });
     
   Palace.associate = function(models) {

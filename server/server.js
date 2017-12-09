@@ -75,10 +75,17 @@ app.get('/auth/facebook/callback',
   }
 );
 
+<<<<<<< HEAD
 app.get('/addPalace', (req, res) => {
   // console.log(req.user);
   res.send(req.user);
 })
+=======
+// app.get('/addPalace', (req, res) => {
+//   console.log(req.user);
+//   res.send(req.user);
+// })
+>>>>>>> b87867d3245f3f88ec1cdd23765eb1afbc1f3db2
 
 app.get('/auth', (req, res) => {
   // console.log(req);
@@ -134,7 +141,7 @@ app.use(webpackHotMiddleware(compiler, {
 
 // app.post('/newUser', controller.postController.newUser);
 
-// app.get('/user', controller.getController.searchForUser);
+// app.get('/user', controller.getController.searchForUser);`
 
 
 app.get('/addPalace', getController.newPalace)
@@ -142,6 +149,8 @@ app.get('/addPalace', getController.newPalace)
 app.get('/deletePalace', deleteController.deletePalace)
 
 app.get('/getPalaces', getController.getPalaces)
+
+app.get('/getPalace', getController.getPalaces)
 
 
 app.listen(SERVER_PORT, () => console.log(`App listening on port ${SERVER_PORT}...`.yellow));
