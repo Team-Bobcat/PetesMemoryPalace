@@ -14,6 +14,7 @@ class ImageView extends Component {
   super(props);
     this.state = {
       nodes: [],
+      palaces: [],
       id: 1,
       selectedOption: 'display',
       locX: 0,
@@ -37,6 +38,16 @@ class ImageView extends Component {
     this.setState({
       nodes: NodeListAPI.nodeList,
       id: NodeListAPI.nodeList.length});
+    }
+
+    fetchPalaces(){
+    fetch('/getPalaces',{
+      method: 'GET',
+      credentials: 'include',
+    }).then((response) => response.json()).then(data => {
+      console.log(data);
+      this.setState({palaces: data});
+    })
   }
 
   // will have to do differently with real API call - .all will need to be written here.
