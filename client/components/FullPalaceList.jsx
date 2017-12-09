@@ -12,12 +12,12 @@ class FullPalaceList extends Component {
         console.log('p.name: ', p.name);
       })
       return(
-        <div>
+        <div className="palace-list-div">
           <h1>PalaceList</h1>
-            <ul>
+            <ul className="palace-ul">
             {
               PalaceListAPI.all().map( (p) => (
-                <li key={p.id}>
+                <li key={p.id} className="palace-li">
                   <Link to={`/PalaceList/${p.id}`}>{p.name}</Link>
                 </li>
               ))

@@ -1,3 +1,18 @@
 body {
-    background-color: pink;
+    background-color: rgb(109, 250, 255);
+}
+.navbar{
+    list-style: none;
+}
+
+/* .palace-list-div{
+    text-align: center;
+} */
+.palace-ul{
+    text-align: center;
+}
+.palace-li{
+    padding-top: 5px;
+    list-style: none;
+    background-color: rgb(146, 218, 214)
 }
