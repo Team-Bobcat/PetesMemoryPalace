@@ -2,7 +2,9 @@ const PalaceListAPI = {
   palaces: [
     { id: 1, name: "Beach", image: "beachHouse.jpeg" },
     { id: 2, name: "Office", image: "office1.jpeg" },
-    { id: 3, name: "Home", image: "bedroom1.jpeg" }
+    { id: 3, name: "Home", image: "bedroom1.jpeg" },
+    { id: 4, name: "Codesmith", image: "bedroom1.jpeg" }
+    
   ],
   all: function(){
     console.log('in "all" - this.palaces: ', this.palaces)
