@@ -50,11 +50,16 @@ body {
 	padding: 0;
 	}
 
-/* .palace-list-div{
+.palace-list-div{
     text-align: center;
-} */
+    align-items: center;
+    justify-content: center;
+}
 .palace-ul{
     text-align: center;
+    display: block;
+    margin-right: 40px;
+    width: 150px;
 }
 .palace-li{
     padding-top: 5px;
