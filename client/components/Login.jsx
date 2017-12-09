@@ -20,16 +20,24 @@ class Login extends Component {
     if (this.state.user.displayName) {
         return <span>Logged in as <strong>{this.state.user.displayName}</strong> | <a href='/logout'>Logout</a></span>;
     } else {
-        return <a href="/auth/facebook"><img src="https://scontent-lax3-2.xx.fbcdn.net/v/t39.2365-6/17639236_1785253958471956_282550797298827264_n.png?oh=499251858fbeca5f9770531c16da6e89&oe=5A89FFEA" /></a>;
+    return (
+    <div>
+      <a className="btn btn-block btn-social btn-facebook" href="/auth/facebook">Sign in with Facebook</a>
+      <br/>
+      <a className="btn btn-block btn-social btn-google" href="/auth/facebook">Sign in with Google </a>
+    </div>);
     }
   }
   render() {
     return(
-      
-      <div id="login">
-        <div className="alignTop"></div>
-        {this.facebookLogin()}
-        <div className="alignBot"></div>
+      <div>
+        <h1>Welcome to your memory palace.</h1>
+        <div id="login">
+          <div className="alignTop"></div>
+          <h2><i>Login to your memories</i></h2>
+          {this.facebookLogin()}
+          <div className="alignBot"></div>
+        </div>
       </div>
     )
   }
