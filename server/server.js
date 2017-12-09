@@ -2,25 +2,64 @@ const express = require('express');
 const colors = require('colors');
 const path = require('path');
 const passport = require('passport');
+const configAuth = require('../config/auth.js');
+const FacebookStrategy = require('passport-facebook');
+const controller = require('./database/controller');
+const session = require("express-session");
+const bodyParser = require("body-parser");
+const cookieParser = require('cookie-parser');
+
 
 const SERVER_PORT = process.env.SERVER_PORT || 3000;
 const env = process.env.NODE_ENV || 'development';
 
 passport.serializeUser(function (user, done) {
+  console.log(user);
   done(null, user.id);
 });
 
 passport.deserializeUser(function (id, done) {
-  postController.getUser(id, user => {
-    done(null, user);
-  });
+  // controller.getUser(id, user => {
+  //   done(null, user);
+  // });
+  // (id, user) => {
+  //   done(null.user);
+  // }
+  console.log(id);
+  done(null, false);
 });
+
+passport.use(new FacebookStrategy({
+  clientID: configAuth.facebookAuth.clientID,
+  clientSecret: configAuth.facebookAuth.clientSecret,
+  callbackURL: configAuth.facebookAuth.callbackURL, 
+  profileFields: ['id', 'name', 'displayName', 'photos', 'emails', 'friends'],
+  },
+  function(accessToken, refreshToken, profile, cb) {
+    // User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+    //   return cb(err, user);
+    // });
+    console.log(profile);
+    cb(null, profile);
+  }
+))
 
 const app = express();
 
+app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(session({
+  secret: configAuth.cookieKey,
+  resave: true,
+  saveUninitialized: true
+}));
 
-app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['profile', 'email'] }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['public_profile','user_friends', 'email'] }));
 
 app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/' }),
