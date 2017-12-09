@@ -25,9 +25,9 @@ passport.serializeUser(function (user, done) {
 
 passport.deserializeUser(function(id, done) {
   // console.log('this: ', id);
-  getController.searchForUser({emails: id.email}, user => {
+  getController.searchForUser({emails: id.email}, ((bob, user) => {
     done(null, user);
-  });
+  }));
 });
 
 passport.use(new FacebookStrategy({
@@ -38,9 +38,11 @@ passport.use(new FacebookStrategy({
   },
   function(accessToken, refreshToken, profile, cb) {
     getController.searchForUser({ emails: profile.emails[0].value }, function (err, user) {
+      console.log('our:', user);
       if (user) {
         cb(null, user)
       } else {
+        console.log('new user being made');
         postController.newUser(profile.emails[0].value, profile.displayName, user => {
           cb(null, user);
         });

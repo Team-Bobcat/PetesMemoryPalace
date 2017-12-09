@@ -28,12 +28,13 @@ dbFuncs.getNodes = (req, res, next) => {
 }
 
 dbFuncs.searchForUser = (id, cb) => {
-  const email = id.emails;
+  const email1 = id.emails;
+  // console.log('our email: ', email1);
   // const displayName = req.query.displayName;
-  db.User.findOne({where: {email: email}})
+  db.User.findOne({where: {email: email1}})
     .then(user => {
-      console.log("USERS", user);
-      if (user !== null) cb(user);
+      // console.log('this: ', user);
+      if (user) cb(null, user);
       else cb(void 0);
     })
 }
