@@ -219,16 +219,87 @@ span {
       margin-top:30px;
   }
 
-
-
+.image-view-vert-grid {
+    display: grid;
+    grid-template-rows: 10% 60% 30%;
+    width:800px;
+    background-color: white;
+    padding-right: 38px;
+    color: #02020a;
+}
+.image-view-h1 {
+    padding-left: 38px;
+    color: #02020a;
+}
  .image-view-grid{
     display: grid;
     grid-template-columns: 35% 65%;
   }
+
+  .image-view-input{
+    width:100%;
+    margin-right:5px;
+    margin-left: 5px;
+    text-align: left;
+    font-size: 12px;
+    height: 30px;
+
+    border: 0;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    background: #f2f2f2;
+    outline: 0;
+  }
+
+  /* playing with the radio buttons*/
+input[type=radio]{
+    position: relative;
+    /* visibility: hidden; */
+  }
 .radio{
-    color: white;
+display: block;
+position: relative;
+font-weight: 300;
+font-size: 1.35em;
+padding: 25px 25px 25px 80px;
+margin: 10px auto;
+height: 30px;
+/* z-index: 9; */
+cursor: pointer;
+-webkit-transition: all 0.25s linear;
+} */
+input[type=radio]:checked ~ .check {
+    border: 5px solid #02020a;
+  }
+  
+input[type=radio]:checked ~ .check::before{
+background: #02020a;
 }
+
+input[type=radio]:checked ~ label{
+color: #02020a;
+}
+/* .radio{
+    padding: 10px;
+    color: #02020a;
+}
+.radio-btn{
+    background-color: blue;
+} */
 .display{
     padding: 2px;
     background-color: white;
  }
+ .node-form{
+    margin-top: 0px;
+}
+.node-form{
+    padding-top: 5px;
+}
+.palace-image{
+    height: fit-content;
+}
+.node-info-display{
+    padding-top: 5px;
+}
